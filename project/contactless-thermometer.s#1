@@ -6375,17 +6375,14 @@ Commonly used for small ceramic capacitors. Like our 0.1uF (http://www.sparkfun.
 <wire x1="-0.3048" y1="4.4958" x2="-2.794" y2="4.4958" width="0.1524" layer="51"/>
 <wire x1="-2.794" y1="4.4958" x2="-2.794" y2="-10.5156" width="0.1524" layer="51"/>
 <wire x1="0.3048" y1="4.4958" x2="-0.3048" y2="4.4958" width="0.1524" layer="51" curve="-180"/>
-<wire x1="-1.5494" y1="-10.6426" x2="1.5494" y2="-10.6426" width="0.2032" layer="21"/>
-<wire x1="2.921" y1="-8.9408" x2="2.921" y2="2.9464" width="0.2032" layer="21"/>
-<wire x1="1.5494" y1="4.6228" x2="-1.5494" y2="4.6228" width="0.2032" layer="21"/>
-<wire x1="-2.921" y1="2.9464" x2="-2.921" y2="-8.9408" width="0.2032" layer="21"/>
-<text x="0" y="2.0066" size="1.27" layer="21" font="vector" ratio="20" rot="SR0" align="bottom-center">*</text>
-<text x="0" y="5.08" size="0.8128" layer="25" font="vector" ratio="20" rot="SR0" align="bottom-center">&gt;Name</text>
-<text x="0" y="-11.176" size="0.8128" layer="27" font="vector" ratio="20" rot="SR0" align="top-center">&gt;Value</text>
-<wire x1="-3.429" y1="4.953" x2="-3.429" y2="-11.049" width="0.0508" layer="39"/>
-<wire x1="-3.429" y1="-11.049" x2="3.429" y2="-11.049" width="0.0508" layer="39"/>
-<wire x1="3.429" y1="-11.049" x2="3.429" y2="4.953" width="0.0508" layer="39"/>
-<wire x1="3.429" y1="4.953" x2="-3.429" y2="4.953" width="0.0508" layer="39"/>
+<text x="-0.8382" y="-3.6322" size="1.27" layer="51" ratio="6" rot="SR0">*</text>
+<wire x1="-1.5494" y1="-10.6426" x2="1.5494" y2="-10.6426" width="0.1524" layer="21"/>
+<wire x1="2.921" y1="-8.9408" x2="2.921" y2="2.9464" width="0.1524" layer="21"/>
+<wire x1="1.5494" y1="4.6228" x2="-1.5494" y2="4.6228" width="0.1524" layer="21"/>
+<wire x1="-2.921" y1="2.9464" x2="-2.921" y2="-8.9408" width="0.1524" layer="21"/>
+<text x="-0.5842" y="1.905" size="1.27" layer="21" ratio="6" rot="SR0">*</text>
+<text x="-3.2766" y="-3.6322" size="1.27" layer="25" ratio="6" rot="SR0">&gt;Name</text>
+<text x="-1.7272" y="-3.6322" size="1.27" layer="27" ratio="6" rot="SR0">&gt;Value</text>
 </package>
 </packages>
 <symbols>
