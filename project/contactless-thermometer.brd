@@ -1639,7 +1639,7 @@ design rules under a new name.</description>
 <attribute name="MANUFACTURER_PART_NUMBER" value="LL3301NF065QG" x="86.04" y="21.336" size="1.778" layer="27" display="off"/>
 <attribute name="MOUSER_PART_NUMBER" value="612-LL3301NF065QG" x="86.04" y="21.336" size="1.778" layer="27" display="off"/>
 <attribute name="MOUSER_PRICE-STOCK" value="https://www.mouser.co.uk/ProductDetail/E-Switch/LL3301NF065QG/?qs=QtyuwXswaQiWhwgY68YTTw%3D%3D" x="86.04" y="21.336" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="24.318" y="80.01" size="1.27" layer="25" font="vector" ratio="20" align="bottom-center"/>
+<attribute name="NAME" x="13.97" y="75.88" size="1.27" layer="25" font="vector" ratio="20" rot="R90" align="bottom-center"/>
 </element>
 <element name="TH1" library="ZTP-148SRC1" package="XDCR_ZTP-148SRC1" value="ZTP-148SRC1" x="19.558" y="130.302" smashed="yes" rot="MR0">
 <attribute name="DESCRIPTION" value=" Temperature Sensor Analog, Infrared (IR) -20°C ~ 100°C TO-46-4 " x="-38.862" y="87.122" size="1.778" layer="28" rot="MR0" display="off"/>
