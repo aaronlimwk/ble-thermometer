@@ -1252,9 +1252,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <text x="-6.604" y="-7.62" size="1.27" layer="27" font="vector" ratio="20">&gt;VALUE</text>
 <hole x="0" y="2.2" drill="0.9"/>
 <hole x="0" y="-2.2" drill="0.9"/>
-<wire x1="-6.604" y1="4.318" x2="-6.604" y2="-4.318" width="0.127" layer="39"/>
-<wire x1="-6.604" y1="-4.318" x2="-4.826" y2="-4.318" width="0.127" layer="39"/>
-<wire x1="-4.826" y1="-4.318" x2="-4.826" y2="-6.096" width="0.127" layer="39"/>
+<wire x1="-4.826" y1="6.096" x2="-4.826" y2="-6.096" width="0.127" layer="39"/>
 <wire x1="-4.826" y1="-6.096" x2="-1.016" y2="-6.096" width="0.127" layer="39"/>
 <wire x1="-1.016" y1="-6.096" x2="-1.016" y2="-4.318" width="0.127" layer="39"/>
 <wire x1="-1.016" y1="-4.318" x2="0.508" y2="-4.318" width="0.127" layer="39"/>
@@ -1266,8 +1264,6 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="0.508" y1="4.318" x2="-1.016" y2="4.318" width="0.127" layer="39"/>
 <wire x1="-1.016" y1="4.318" x2="-1.016" y2="6.096" width="0.127" layer="39"/>
 <wire x1="-1.016" y1="6.096" x2="-4.826" y2="6.096" width="0.127" layer="39"/>
-<wire x1="-4.826" y1="6.096" x2="-4.826" y2="4.318" width="0.127" layer="39"/>
-<wire x1="-4.826" y1="4.318" x2="-6.604" y2="4.318" width="0.127" layer="39"/>
 </package>
 </packages>
 <symbols>

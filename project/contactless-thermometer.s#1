@@ -7060,9 +7060,9 @@ Commonly used for small ceramic capacitors. Like our 0.1uF (http://www.sparkfun.
 <attribute name="NAME" x="243.586" y="48.26" size="1.778" layer="95" rot="R90" align="bottom-center"/>
 <attribute name="TP_SIGNAL_NAME" x="245.11" y="49.53" size="1.778" layer="97" rot="R90"/>
 </instance>
-<instance part="TP7" gate="G$1" x="358.14" y="71.12" smashed="yes">
-<attribute name="NAME" x="358.14" y="71.374" size="1.778" layer="95" align="bottom-center"/>
-<attribute name="TP_SIGNAL_NAME" x="359.41" y="69.85" size="1.778" layer="97"/>
+<instance part="TP7" gate="G$1" x="327.66" y="86.36" smashed="yes">
+<attribute name="NAME" x="327.66" y="86.614" size="1.778" layer="95" align="bottom-center"/>
+<attribute name="TP_SIGNAL_NAME" x="328.93" y="85.09" size="1.778" layer="97"/>
 </instance>
 <instance part="TP8" gate="G$1" x="170.18" y="43.18" smashed="yes">
 <attribute name="NAME" x="170.18" y="43.434" size="1.778" layer="95" align="bottom-center"/>
@@ -7460,13 +7460,13 @@ Commonly used for small ceramic capacitors. Like our 0.1uF (http://www.sparkfun.
 <pinref part="C5" gate="G$1" pin="2"/>
 </segment>
 <segment>
-<label x="360.68" y="66.04" size="1.778" layer="95" align="center-left" grouprefs="MCU"/>
-<wire x1="358.14" y1="66.04" x2="360.68" y2="66.04" width="0.1524" layer="91" grouprefs="MCU"/>
-<wire x1="358.14" y1="68.58" x2="358.14" y2="66.04" width="0.1524" layer="91" grouprefs="MCU"/>
+<label x="330.2" y="81.28" size="1.778" layer="95" align="center-left" grouprefs="MCU"/>
+<wire x1="327.66" y1="81.28" x2="330.2" y2="81.28" width="0.1524" layer="91" grouprefs="MCU"/>
+<wire x1="327.66" y1="83.82" x2="327.66" y2="81.28" width="0.1524" layer="91" grouprefs="MCU"/>
 <pinref part="TP7" gate="G$1" pin="TP"/>
-<pinref part="U5" gate="G$1" pin="ADC6"/>
-<wire x1="325.12" y1="66.04" x2="358.14" y2="66.04" width="0.1524" layer="91"/>
-<junction x="358.14" y="66.04"/>
+<pinref part="U5" gate="G$1" pin="PC0(ADC0)"/>
+<wire x1="325.12" y1="81.28" x2="327.66" y2="81.28" width="0.1524" layer="91"/>
+<junction x="327.66" y="81.28"/>
 </segment>
 </net>
 <net name="N$17" class="0">

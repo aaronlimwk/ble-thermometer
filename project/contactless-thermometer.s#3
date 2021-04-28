@@ -7932,15 +7932,6 @@ Commonly used for small ceramic capacitors. Like our 0.1uF (http://www.sparkfun.
 <pinref part="J3" gate="G$1" pin="4"/>
 </segment>
 </net>
-<net name="N$15" class="0">
-<segment>
-<pinref part="U5" gate="G$1" pin="PB3(MOSI/OC2)"/>
-<wire x1="325.12" y1="27.94" x2="330.2" y2="27.94" width="0.1524" layer="91" grouprefs="MCU"/>
-<wire x1="330.2" y1="27.94" x2="330.2" y2="22.86" width="0.1524" layer="91" grouprefs="MCU"/>
-<pinref part="J2" gate="G$1" pin="1"/>
-<wire x1="330.2" y1="22.86" x2="332.74" y2="22.86" width="0.1524" layer="91" grouprefs="MCU"/>
-</segment>
-</net>
 <net name="N$19" class="0">
 <segment>
 <pinref part="U5" gate="G$1" pin="PB4(MISO)"/>
@@ -7948,14 +7939,6 @@ Commonly used for small ceramic capacitors. Like our 0.1uF (http://www.sparkfun.
 <wire x1="327.66" y1="25.4" x2="327.66" y2="20.32" width="0.1524" layer="91" grouprefs="MCU"/>
 <pinref part="J2" gate="G$1" pin="3"/>
 <wire x1="327.66" y1="20.32" x2="332.74" y2="20.32" width="0.1524" layer="91" grouprefs="MCU"/>
-</segment>
-</net>
-<net name="N$21" class="0">
-<segment>
-<pinref part="U5" gate="G$1" pin="PB5(SCK)"/>
-<wire x1="325.12" y1="22.86" x2="325.12" y2="17.78" width="0.1524" layer="91" grouprefs="MCU"/>
-<pinref part="J2" gate="G$1" pin="5"/>
-<wire x1="325.12" y1="17.78" x2="332.74" y2="17.78" width="0.1524" layer="91" grouprefs="MCU"/>
 </segment>
 </net>
 <net name="LED_G" class="0">
@@ -8230,6 +8213,22 @@ Commonly used for small ceramic capacitors. Like our 0.1uF (http://www.sparkfun.
 <wire x1="347.98" y1="55.88" x2="350.52" y2="55.88" width="0.1524" layer="91" grouprefs="MCU"/>
 <label x="350.52" y="55.88" size="1.778" layer="95" align="center-left" grouprefs="MCU"/>
 <pinref part="R21" gate="G$1" pin="2"/>
+</segment>
+</net>
+<net name="N$15" class="0">
+<segment>
+<pinref part="U5" gate="G$1" pin="PB5(SCK)"/>
+<pinref part="J2" gate="G$1" pin="1"/>
+<wire x1="325.12" y1="22.86" x2="332.74" y2="22.86" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$21" class="0">
+<segment>
+<pinref part="U5" gate="G$1" pin="PB3(MOSI/OC2)"/>
+<wire x1="325.12" y1="27.94" x2="330.2" y2="27.94" width="0.1524" layer="91"/>
+<wire x1="330.2" y1="27.94" x2="330.2" y2="17.78" width="0.1524" layer="91"/>
+<pinref part="J2" gate="G$1" pin="5"/>
+<wire x1="330.2" y1="17.78" x2="332.74" y2="17.78" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
