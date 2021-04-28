@@ -6564,8 +6564,8 @@ Commonly used for small ceramic capacitors. Like our 0.1uF (http://www.sparkfun.
 <part name="C2" library="SparkFun-Capacitors" deviceset="0.1UF" device="-0603-25V-(+80/-20%)" value="0.1uF"/>
 <part name="C6" library="SparkFun-Capacitors" deviceset="0.1UF" device="-0603-25V-(+80/-20%)" value="0.1uF"/>
 <part name="C5" library="SparkFun-Capacitors" deviceset="0.1UF" device="-0603-25V-(+80/-20%)" value="0.1uF"/>
-<part name="C11" library="SparkFun-Capacitors" deviceset="0.1UF" device="-0603-25V-(+80/-20%)" value="22pF"/>
-<part name="C12" library="SparkFun-Capacitors" deviceset="0.1UF" device="-0603-25V-(+80/-20%)" value="22pF"/>
+<part name="C11" library="SparkFun-Capacitors" deviceset="0.1UF" device="-0603-25V-(+80/-20%)" value="0.1uF"/>
+<part name="C12" library="SparkFun-Capacitors" deviceset="0.1UF" device="-0603-25V-(+80/-20%)" value="0.1uF"/>
 <part name="C7" library="GRM21BR6YA106KE43L" deviceset="GRM21BR6YA106KE43L" device="" value="10uF"/>
 <part name="C20" library="GRM21BR6YA106KE43L" deviceset="GRM21BR6YA106KE43L" device="" value="2.2uF"/>
 <part name="C16" library="SparkFun-Capacitors" deviceset="10UF" device="-1206-6.3V-20%" value="10uF"/>
@@ -6605,9 +6605,9 @@ Commonly used for small ceramic capacitors. Like our 0.1uF (http://www.sparkfun.
 <attribute name="NAME" x="85.09" y="22.86" size="1.778" layer="95" align="center-left"/>
 <attribute name="VALUE" x="85.09" y="20.32" size="1.778" layer="96" align="center-left"/>
 </instance>
-<instance part="BT1" gate="G$1" x="-5.08" y="92.71" smashed="yes" rot="MR270" grouprefs="POWER">
-<attribute name="NAME" x="-8.89" y="93.98" size="1.778" layer="95" rot="MR0"/>
-<attribute name="VALUE" x="-8.89" y="91.44" size="1.778" layer="96" rot="MR0"/>
+<instance part="BT1" gate="G$1" x="-10.16" y="92.71" smashed="yes" rot="MR270" grouprefs="POWER">
+<attribute name="NAME" x="-13.97" y="93.98" size="1.778" layer="95" rot="MR0"/>
+<attribute name="VALUE" x="-13.97" y="91.44" size="1.778" layer="96" rot="MR0"/>
 </instance>
 <instance part="U4" gate="G$1" x="33.02" y="96.52" smashed="yes" grouprefs="POWER">
 <attribute name="NAME" x="38.1" y="104.14" size="1.778" layer="95" align="center-left"/>
@@ -6684,15 +6684,15 @@ Commonly used for small ceramic capacitors. Like our 0.1uF (http://www.sparkfun.
 <instance part="SUPPLY26" gate="GND" x="274.32" y="27.94" smashed="yes" grouprefs="MCU">
 <attribute name="VALUE" x="274.32" y="26.416" size="1.778" layer="96" align="top-center"/>
 </instance>
-<instance part="S2" gate="G$1" x="231.14" y="-30.48" smashed="yes" grouprefs="BUTTON MCU">
+<instance part="S2" gate="G$1" x="231.14" y="-30.48" smashed="yes" grouprefs="MCU BUTTON">
 <attribute name="NAME" x="234.95" y="-25.4" size="1.524" layer="95" align="center-left"/>
 <attribute name="VALUE" x="234.95" y="-27.94" size="1.524" layer="96" align="center-left"/>
 </instance>
-<instance part="S3" gate="G$1" x="261.62" y="-30.48" smashed="yes" grouprefs="BUTTON MCU">
+<instance part="S3" gate="G$1" x="261.62" y="-30.48" smashed="yes" grouprefs="MCU BUTTON">
 <attribute name="NAME" x="265.43" y="-25.4" size="1.524" layer="95" align="center-left"/>
 <attribute name="VALUE" x="265.43" y="-27.94" size="1.524" layer="96" align="center-left"/>
 </instance>
-<instance part="S4" gate="G$1" x="292.1" y="-30.48" smashed="yes" grouprefs="BUTTON MCU">
+<instance part="S4" gate="G$1" x="292.1" y="-30.48" smashed="yes" grouprefs="MCU BUTTON">
 <attribute name="NAME" x="295.91" y="-25.4" size="1.524" layer="95" align="center-left"/>
 <attribute name="VALUE" x="295.91" y="-27.94" size="1.524" layer="96" align="center-left"/>
 </instance>
@@ -6720,13 +6720,13 @@ Commonly used for small ceramic capacitors. Like our 0.1uF (http://www.sparkfun.
 <attribute name="NAME" x="324.104" y="-31.75" size="1.778" layer="95" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="329.692" y="-31.75" size="1.778" layer="96" rot="R90" align="top-center"/>
 </instance>
-<instance part="SUPPLY17" gate="GND" x="231.14" y="-58.42" smashed="yes" grouprefs="BUTTON MCU">
+<instance part="SUPPLY17" gate="GND" x="231.14" y="-58.42" smashed="yes" grouprefs="MCU BUTTON">
 <attribute name="VALUE" x="231.14" y="-59.944" size="1.778" layer="96" align="top-center"/>
 </instance>
-<instance part="SUPPLY18" gate="GND" x="261.62" y="-58.42" smashed="yes" grouprefs="BUTTON MCU">
+<instance part="SUPPLY18" gate="GND" x="261.62" y="-58.42" smashed="yes" grouprefs="MCU BUTTON">
 <attribute name="VALUE" x="261.62" y="-59.944" size="1.778" layer="96" align="top-center"/>
 </instance>
-<instance part="SUPPLY21" gate="GND" x="292.1" y="-58.42" smashed="yes" grouprefs="BUTTON MCU">
+<instance part="SUPPLY21" gate="GND" x="292.1" y="-58.42" smashed="yes" grouprefs="MCU BUTTON">
 <attribute name="VALUE" x="292.1" y="-59.944" size="1.778" layer="96" align="top-center"/>
 </instance>
 <instance part="SUPPLY24" gate="GND" x="327.66" y="-58.42" smashed="yes" grouprefs="LED MCU">
@@ -6840,15 +6840,15 @@ Commonly used for small ceramic capacitors. Like our 0.1uF (http://www.sparkfun.
 <attribute name="NAME" x="342.9" y="65.024" size="1.778" layer="95" align="bottom-center"/>
 <attribute name="VALUE" x="342.9" y="61.976" size="1.778" layer="96" align="top-center"/>
 </instance>
-<instance part="R16" gate="G$1" x="231.14" y="-48.26" smashed="yes" rot="R90" grouprefs="BUTTON MCU">
+<instance part="R16" gate="G$1" x="231.14" y="-48.26" smashed="yes" rot="R90" grouprefs="MCU BUTTON">
 <attribute name="NAME" x="229.616" y="-48.26" size="1.778" layer="95" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="232.664" y="-48.26" size="1.778" layer="96" rot="R90" align="top-center"/>
 </instance>
-<instance part="R17" gate="G$1" x="261.62" y="-48.26" smashed="yes" rot="R90" grouprefs="BUTTON MCU">
+<instance part="R17" gate="G$1" x="261.62" y="-48.26" smashed="yes" rot="R90" grouprefs="MCU BUTTON">
 <attribute name="NAME" x="260.096" y="-48.26" size="1.778" layer="95" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="263.144" y="-48.26" size="1.778" layer="96" rot="R90" align="top-center"/>
 </instance>
-<instance part="R18" gate="G$1" x="292.1" y="-48.26" smashed="yes" rot="R90" grouprefs="BUTTON MCU">
+<instance part="R18" gate="G$1" x="292.1" y="-48.26" smashed="yes" rot="R90" grouprefs="MCU BUTTON">
 <attribute name="NAME" x="290.576" y="-48.26" size="1.778" layer="95" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="293.624" y="-48.26" size="1.778" layer="96" rot="R90" align="top-center"/>
 </instance>
@@ -6865,13 +6865,13 @@ Commonly used for small ceramic capacitors. Like our 0.1uF (http://www.sparkfun.
 <instance part="SUPPLY15" gate="G$1" x="350.52" y="25.4" smashed="yes" grouprefs="MCU">
 <attribute name="VALUE" x="350.52" y="28.194" size="1.778" layer="96" align="bottom-center"/>
 </instance>
-<instance part="SUPPLY14" gate="G$1" x="231.14" y="-20.32" smashed="yes" grouprefs="MCU BUTTON">
+<instance part="SUPPLY14" gate="G$1" x="231.14" y="-20.32" smashed="yes" grouprefs="BUTTON MCU">
 <attribute name="VALUE" x="231.14" y="-17.526" size="1.778" layer="96" align="bottom-center"/>
 </instance>
-<instance part="SUPPLY19" gate="G$1" x="261.62" y="-20.32" smashed="yes" grouprefs="MCU BUTTON">
+<instance part="SUPPLY19" gate="G$1" x="261.62" y="-20.32" smashed="yes" grouprefs="BUTTON MCU">
 <attribute name="VALUE" x="261.62" y="-17.526" size="1.778" layer="96" align="bottom-center"/>
 </instance>
-<instance part="SUPPLY27" gate="G$1" x="292.1" y="-20.32" smashed="yes" grouprefs="MCU BUTTON">
+<instance part="SUPPLY27" gate="G$1" x="292.1" y="-20.32" smashed="yes" grouprefs="BUTTON MCU">
 <attribute name="VALUE" x="292.1" y="-17.526" size="1.778" layer="96" align="bottom-center"/>
 </instance>
 <instance part="SUPPLY28" gate="G$1" x="116.84" y="-20.32" smashed="yes" grouprefs="FTDI">
@@ -7073,12 +7073,12 @@ Commonly used for small ceramic capacitors. Like our 0.1uF (http://www.sparkfun.
 <attribute name="NAME" x="185.42" y="43.434" size="1.778" layer="95" align="bottom-center"/>
 <attribute name="TP_SIGNAL_NAME" x="186.69" y="41.91" size="1.778" layer="97"/>
 </instance>
-<instance part="C21" gate="G$1" x="15.24" y="85.09" smashed="yes" rot="R90" grouprefs="POWER">
-<attribute name="NAME" x="16.76306875" y="88.138" size="1.778" layer="95"/>
-<attribute name="VALUE" x="16.77248125" y="83.058" size="1.778" layer="96"/>
+<instance part="C21" gate="G$1" x="12.7" y="85.09" smashed="yes" rot="R90" grouprefs="POWER">
+<attribute name="NAME" x="14.22306875" y="88.138" size="1.778" layer="95"/>
+<attribute name="VALUE" x="14.23248125" y="83.058" size="1.778" layer="96"/>
 </instance>
-<instance part="S1" gate="A" x="0" y="99.06" smashed="yes">
-<attribute name="NAME" x="7.62" y="106.68" size="1.778" layer="95" ratio="6" rot="SR0"/>
+<instance part="S1" gate="A" x="-5.08" y="99.06" smashed="yes">
+<attribute name="NAME" x="2.54" y="106.68" size="1.778" layer="95" ratio="6" rot="SR0"/>
 </instance>
 </instances>
 <busses>
@@ -7091,10 +7091,10 @@ Commonly used for small ceramic capacitors. Like our 0.1uF (http://www.sparkfun.
 <wire x1="60.96" y1="76.2" x2="93.98" y2="76.2" width="0.1524" layer="91" grouprefs="POWER"/>
 <pinref part="BT1" gate="G$1" pin="-"/>
 <wire x1="93.98" y1="76.2" x2="101.6" y2="76.2" width="0.1524" layer="91" grouprefs="POWER"/>
-<wire x1="-5.08" y1="81.28" x2="-5.08" y2="76.2" width="0.1524" layer="91" grouprefs="POWER"/>
-<wire x1="-5.08" y1="76.2" x2="15.24" y2="76.2" width="0.1524" layer="91" grouprefs="POWER"/>
+<wire x1="-10.16" y1="81.28" x2="-10.16" y2="76.2" width="0.1524" layer="91" grouprefs="POWER"/>
+<wire x1="-10.16" y1="76.2" x2="12.7" y2="76.2" width="0.1524" layer="91" grouprefs="POWER"/>
 <junction x="60.96" y="76.2" grouprefs="POWER"/>
-<wire x1="15.24" y1="76.2" x2="25.4" y2="76.2" width="0.1524" layer="91" grouprefs="POWER"/>
+<wire x1="12.7" y1="76.2" x2="25.4" y2="76.2" width="0.1524" layer="91" grouprefs="POWER"/>
 <wire x1="25.4" y1="76.2" x2="60.96" y2="76.2" width="0.1524" layer="91" grouprefs="POWER"/>
 <wire x1="25.4" y1="82.55" x2="25.4" y2="76.2" width="0.1524" layer="91" grouprefs="POWER"/>
 <junction x="25.4" y="76.2" grouprefs="POWER"/>
@@ -7105,8 +7105,8 @@ Commonly used for small ceramic capacitors. Like our 0.1uF (http://www.sparkfun.
 <pinref part="C7" gate="G$1" pin="1"/>
 <pinref part="C9" gate="G$1" pin="2"/>
 <pinref part="C21" gate="G$1" pin="1"/>
-<wire x1="15.24" y1="82.55" x2="15.24" y2="76.2" width="0.1524" layer="91" grouprefs="POWER"/>
-<junction x="15.24" y="76.2" grouprefs="POWER"/>
+<wire x1="12.7" y1="82.55" x2="12.7" y2="76.2" width="0.1524" layer="91" grouprefs="POWER"/>
+<junction x="12.7" y="76.2" grouprefs="POWER"/>
 </segment>
 <segment>
 <wire x1="238.76" y1="58.42" x2="238.76" y2="60.96" width="0.1524" layer="91" grouprefs="MCU"/>
@@ -7196,17 +7196,17 @@ Commonly used for small ceramic capacitors. Like our 0.1uF (http://www.sparkfun.
 <pinref part="S5" gate="G$1" pin="COM"/>
 </segment>
 <segment>
-<wire x1="231.14" y1="-53.34" x2="231.14" y2="-55.88" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
+<wire x1="231.14" y1="-53.34" x2="231.14" y2="-55.88" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
 <pinref part="SUPPLY17" gate="GND" pin="GND"/>
 <pinref part="R16" gate="G$1" pin="1"/>
 </segment>
 <segment>
-<wire x1="261.62" y1="-53.34" x2="261.62" y2="-55.88" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
+<wire x1="261.62" y1="-53.34" x2="261.62" y2="-55.88" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
 <pinref part="SUPPLY18" gate="GND" pin="GND"/>
 <pinref part="R17" gate="G$1" pin="1"/>
 </segment>
 <segment>
-<wire x1="292.1" y1="-53.34" x2="292.1" y2="-55.88" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
+<wire x1="292.1" y1="-53.34" x2="292.1" y2="-55.88" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
 <pinref part="SUPPLY21" gate="GND" pin="GND"/>
 <pinref part="R18" gate="G$1" pin="1"/>
 </segment>
@@ -7326,11 +7326,6 @@ Commonly used for small ceramic capacitors. Like our 0.1uF (http://www.sparkfun.
 <wire x1="274.32" y1="5.08" x2="274.32" y2="2.54" width="0.1524" layer="91" grouprefs="MCU"/>
 <pinref part="C19" gate="G$1" pin="2"/>
 </segment>
-<segment>
-<pinref part="C4" gate="G$1" pin="2"/>
-<pinref part="SUPPLY2" gate="GND" pin="GND"/>
-<wire x1="86.36" y1="43.18" x2="88.9" y2="43.18" width="0.1524" layer="91"/>
-</segment>
 </net>
 <net name="5V" class="0">
 <segment>
@@ -7360,13 +7355,16 @@ Commonly used for small ceramic capacitors. Like our 0.1uF (http://www.sparkfun.
 <pinref part="R1" gate="G$1" pin="2"/>
 </segment>
 <segment>
+<pinref part="SUPPLY2" gate="GND" pin="GND"/>
 <pinref part="U1" gate="G$1" pin="+VS"/>
 <wire x1="76.2" y1="40.64" x2="76.2" y2="43.18" width="0.1524" layer="91" grouprefs="TEMP_SENSE"/>
 <wire x1="76.2" y1="43.18" x2="76.2" y2="48.26" width="0.1524" layer="91" grouprefs="TEMP_SENSE"/>
 <wire x1="78.74" y1="43.18" x2="76.2" y2="43.18" width="0.1524" layer="91" grouprefs="TEMP_SENSE"/>
 <junction x="76.2" y="43.18" grouprefs="TEMP_SENSE"/>
+<wire x1="86.36" y1="43.18" x2="88.9" y2="43.18" width="0.1524" layer="91" grouprefs="TEMP_SENSE"/>
 <pinref part="SUPPLY12" gate="G$1" pin="5V"/>
 <pinref part="C4" gate="G$1" pin="1"/>
+<pinref part="C4" gate="G$1" pin="2"/>
 </segment>
 <segment>
 <wire x1="226.06" y1="10.16" x2="228.6" y2="10.16" width="0.1524" layer="91" grouprefs="MCU"/>
@@ -7554,12 +7552,12 @@ Commonly used for small ceramic capacitors. Like our 0.1uF (http://www.sparkfun.
 <net name="VIN" class="0">
 <segment>
 <pinref part="U4" gate="G$1" pin="VIN"/>
-<wire x1="15.24" y1="96.52" x2="25.4" y2="96.52" width="0.1524" layer="91" grouprefs="POWER"/>
+<wire x1="12.7" y1="96.52" x2="25.4" y2="96.52" width="0.1524" layer="91" grouprefs="POWER"/>
 <wire x1="25.4" y1="96.52" x2="30.48" y2="96.52" width="0.1524" layer="91" grouprefs="POWER"/>
 <wire x1="30.48" y1="96.52" x2="33.02" y2="96.52" width="0.1524" layer="91" grouprefs="POWER"/>
 <wire x1="25.4" y1="90.17" x2="25.4" y2="96.52" width="0.1524" layer="91" grouprefs="POWER"/>
 <junction x="25.4" y="96.52" grouprefs="POWER"/>
-<label x="15.24" y="97.282" size="1.778" layer="95" align="bottom-center" grouprefs="POWER"/>
+<label x="25.4" y="97.282" size="1.778" layer="95" align="bottom-center" grouprefs="POWER"/>
 <pinref part="U4" gate="G$1" pin="EN"/>
 <wire x1="33.02" y1="91.44" x2="30.48" y2="91.44" width="0.1524" layer="91" grouprefs="POWER"/>
 <wire x1="30.48" y1="91.44" x2="30.48" y2="96.52" width="0.1524" layer="91" grouprefs="POWER"/>
@@ -7568,10 +7566,11 @@ Commonly used for small ceramic capacitors. Like our 0.1uF (http://www.sparkfun.
 <pinref part="C7" gate="G$1" pin="2"/>
 <pinref part="TP1" gate="G$1" pin="TP"/>
 <pinref part="C21" gate="G$1" pin="2"/>
-<wire x1="15.24" y1="90.17" x2="15.24" y2="96.52" width="0.1524" layer="91" grouprefs="POWER"/>
-<pinref part="S1" gate="A" pin="3"/>
-<wire x1="10.16" y1="96.52" x2="15.24" y2="96.52" width="0.1524" layer="91"/>
-<junction x="15.24" y="96.52"/>
+<wire x1="12.7" y1="90.17" x2="12.7" y2="96.52" width="0.1524" layer="91" grouprefs="POWER"/>
+<pinref part="S1" gate="A" pin="1"/>
+<wire x1="5.08" y1="101.6" x2="12.7" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="12.7" y1="101.6" x2="12.7" y2="96.52" width="0.1524" layer="91"/>
+<junction x="12.7" y="96.52"/>
 </segment>
 </net>
 <net name="AVCC" class="0">
@@ -7588,9 +7587,9 @@ Commonly used for small ceramic capacitors. Like our 0.1uF (http://www.sparkfun.
 <net name="VBAT" class="0">
 <segment>
 <pinref part="BT1" gate="G$1" pin="+"/>
-<wire x1="-5.08" y1="92.71" x2="-5.08" y2="99.06" width="0.1524" layer="91" grouprefs="POWER"/>
-<wire x1="-5.08" y1="99.06" x2="0" y2="99.06" width="0.1524" layer="91" grouprefs="POWER"/>
-<label x="-5.08" y="99.06" size="1.778" layer="95" rot="R180" align="top-left" grouprefs="POWER"/>
+<wire x1="-10.16" y1="92.71" x2="-10.16" y2="99.06" width="0.1524" layer="91" grouprefs="POWER"/>
+<wire x1="-10.16" y1="99.06" x2="-5.08" y2="99.06" width="0.1524" layer="91" grouprefs="POWER"/>
+<label x="-10.16" y="99.06" size="1.778" layer="95" rot="R180" align="top-left" grouprefs="POWER"/>
 <pinref part="S1" gate="A" pin="2"/>
 </segment>
 </net>
@@ -7740,16 +7739,16 @@ Commonly used for small ceramic capacitors. Like our 0.1uF (http://www.sparkfun.
 <label x="327.66" y="48.26" size="1.778" layer="95" align="center-left" grouprefs="MCU"/>
 </segment>
 <segment>
-<wire x1="289.56" y1="-35.56" x2="289.56" y2="-38.1" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<wire x1="289.56" y1="-38.1" x2="292.1" y2="-38.1" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<wire x1="292.1" y1="-38.1" x2="294.64" y2="-38.1" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<wire x1="294.64" y1="-38.1" x2="294.64" y2="-35.56" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<wire x1="292.1" y1="-43.18" x2="292.1" y2="-40.64" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<junction x="292.1" y="-38.1" grouprefs="BUTTON MCU"/>
-<wire x1="292.1" y1="-40.64" x2="292.1" y2="-38.1" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<wire x1="292.1" y1="-40.64" x2="281.94" y2="-40.64" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<junction x="292.1" y="-40.64" grouprefs="BUTTON MCU"/>
-<label x="281.94" y="-40.64" size="1.778" layer="95" rot="R180" align="center-left" grouprefs="BUTTON MCU"/>
+<wire x1="289.56" y1="-35.56" x2="289.56" y2="-38.1" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<wire x1="289.56" y1="-38.1" x2="292.1" y2="-38.1" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<wire x1="292.1" y1="-38.1" x2="294.64" y2="-38.1" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<wire x1="294.64" y1="-38.1" x2="294.64" y2="-35.56" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<wire x1="292.1" y1="-43.18" x2="292.1" y2="-40.64" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<junction x="292.1" y="-38.1" grouprefs="MCU BUTTON"/>
+<wire x1="292.1" y1="-40.64" x2="292.1" y2="-38.1" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<wire x1="292.1" y1="-40.64" x2="281.94" y2="-40.64" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<junction x="292.1" y="-40.64" grouprefs="MCU BUTTON"/>
+<label x="281.94" y="-40.64" size="1.778" layer="95" rot="R180" align="center-left" grouprefs="MCU BUTTON"/>
 <pinref part="S4" gate="G$1" pin="1"/>
 <pinref part="S4" gate="G$1" pin="2"/>
 <pinref part="R18" gate="G$1" pin="2"/>
@@ -7762,16 +7761,16 @@ Commonly used for small ceramic capacitors. Like our 0.1uF (http://www.sparkfun.
 <label x="327.66" y="50.8" size="1.778" layer="95" align="center-left" grouprefs="MCU"/>
 </segment>
 <segment>
-<wire x1="259.08" y1="-35.56" x2="259.08" y2="-38.1" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<wire x1="259.08" y1="-38.1" x2="261.62" y2="-38.1" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<wire x1="261.62" y1="-38.1" x2="264.16" y2="-38.1" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<wire x1="264.16" y1="-38.1" x2="264.16" y2="-35.56" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<wire x1="261.62" y1="-43.18" x2="261.62" y2="-40.64" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<junction x="261.62" y="-38.1" grouprefs="BUTTON MCU"/>
-<wire x1="261.62" y1="-40.64" x2="261.62" y2="-38.1" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<wire x1="261.62" y1="-40.64" x2="251.46" y2="-40.64" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<junction x="261.62" y="-40.64" grouprefs="BUTTON MCU"/>
-<label x="251.46" y="-40.64" size="1.778" layer="95" rot="R180" align="center-left" grouprefs="BUTTON MCU"/>
+<wire x1="259.08" y1="-35.56" x2="259.08" y2="-38.1" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<wire x1="259.08" y1="-38.1" x2="261.62" y2="-38.1" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<wire x1="261.62" y1="-38.1" x2="264.16" y2="-38.1" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<wire x1="264.16" y1="-38.1" x2="264.16" y2="-35.56" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<wire x1="261.62" y1="-43.18" x2="261.62" y2="-40.64" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<junction x="261.62" y="-38.1" grouprefs="MCU BUTTON"/>
+<wire x1="261.62" y1="-40.64" x2="261.62" y2="-38.1" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<wire x1="261.62" y1="-40.64" x2="251.46" y2="-40.64" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<junction x="261.62" y="-40.64" grouprefs="MCU BUTTON"/>
+<label x="251.46" y="-40.64" size="1.778" layer="95" rot="R180" align="center-left" grouprefs="MCU BUTTON"/>
 <pinref part="S3" gate="G$1" pin="1"/>
 <pinref part="S3" gate="G$1" pin="2"/>
 <pinref part="R17" gate="G$1" pin="2"/>
@@ -7784,16 +7783,16 @@ Commonly used for small ceramic capacitors. Like our 0.1uF (http://www.sparkfun.
 <label x="327.66" y="53.34" size="1.778" layer="95" align="center-left" grouprefs="MCU"/>
 </segment>
 <segment>
-<wire x1="228.6" y1="-35.56" x2="228.6" y2="-38.1" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<wire x1="228.6" y1="-38.1" x2="231.14" y2="-38.1" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<wire x1="231.14" y1="-38.1" x2="233.68" y2="-38.1" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<wire x1="233.68" y1="-38.1" x2="233.68" y2="-35.56" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<wire x1="231.14" y1="-43.18" x2="231.14" y2="-40.64" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<junction x="231.14" y="-38.1" grouprefs="BUTTON MCU"/>
-<wire x1="231.14" y1="-40.64" x2="231.14" y2="-38.1" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<wire x1="231.14" y1="-40.64" x2="220.98" y2="-40.64" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<junction x="231.14" y="-40.64" grouprefs="BUTTON MCU"/>
-<label x="220.98" y="-40.64" size="1.778" layer="95" rot="R180" align="center-left" grouprefs="BUTTON MCU"/>
+<wire x1="228.6" y1="-35.56" x2="228.6" y2="-38.1" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<wire x1="228.6" y1="-38.1" x2="231.14" y2="-38.1" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<wire x1="231.14" y1="-38.1" x2="233.68" y2="-38.1" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<wire x1="233.68" y1="-38.1" x2="233.68" y2="-35.56" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<wire x1="231.14" y1="-43.18" x2="231.14" y2="-40.64" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<junction x="231.14" y="-38.1" grouprefs="MCU BUTTON"/>
+<wire x1="231.14" y1="-40.64" x2="231.14" y2="-38.1" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<wire x1="231.14" y1="-40.64" x2="220.98" y2="-40.64" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<junction x="231.14" y="-40.64" grouprefs="MCU BUTTON"/>
+<label x="220.98" y="-40.64" size="1.778" layer="95" rot="R180" align="center-left" grouprefs="MCU BUTTON"/>
 <pinref part="S2" gate="G$1" pin="1"/>
 <pinref part="S2" gate="G$1" pin="2"/>
 <pinref part="R16" gate="G$1" pin="2"/>
@@ -8132,34 +8131,34 @@ Commonly used for small ceramic capacitors. Like our 0.1uF (http://www.sparkfun.
 <pinref part="C14" gate="G$1" pin="1"/>
 </segment>
 <segment>
-<wire x1="228.6" y1="-25.4" x2="228.6" y2="-22.86" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<wire x1="228.6" y1="-22.86" x2="231.14" y2="-22.86" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<wire x1="231.14" y1="-22.86" x2="233.68" y2="-22.86" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<wire x1="233.68" y1="-22.86" x2="233.68" y2="-25.4" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<wire x1="231.14" y1="-22.86" x2="231.14" y2="-20.32" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<junction x="231.14" y="-22.86" grouprefs="BUTTON MCU"/>
+<wire x1="228.6" y1="-25.4" x2="228.6" y2="-22.86" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<wire x1="228.6" y1="-22.86" x2="231.14" y2="-22.86" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<wire x1="231.14" y1="-22.86" x2="233.68" y2="-22.86" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<wire x1="233.68" y1="-22.86" x2="233.68" y2="-25.4" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<wire x1="231.14" y1="-22.86" x2="231.14" y2="-20.32" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<junction x="231.14" y="-22.86" grouprefs="MCU BUTTON"/>
 <pinref part="S2" gate="G$1" pin="3"/>
 <pinref part="S2" gate="G$1" pin="4"/>
 <pinref part="SUPPLY14" gate="G$1" pin="VCC"/>
 </segment>
 <segment>
-<wire x1="259.08" y1="-25.4" x2="259.08" y2="-22.86" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<wire x1="259.08" y1="-22.86" x2="261.62" y2="-22.86" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<wire x1="261.62" y1="-22.86" x2="264.16" y2="-22.86" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<wire x1="264.16" y1="-22.86" x2="264.16" y2="-25.4" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<wire x1="261.62" y1="-22.86" x2="261.62" y2="-20.32" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<junction x="261.62" y="-22.86" grouprefs="BUTTON MCU"/>
+<wire x1="259.08" y1="-25.4" x2="259.08" y2="-22.86" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<wire x1="259.08" y1="-22.86" x2="261.62" y2="-22.86" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<wire x1="261.62" y1="-22.86" x2="264.16" y2="-22.86" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<wire x1="264.16" y1="-22.86" x2="264.16" y2="-25.4" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<wire x1="261.62" y1="-22.86" x2="261.62" y2="-20.32" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<junction x="261.62" y="-22.86" grouprefs="MCU BUTTON"/>
 <pinref part="S3" gate="G$1" pin="3"/>
 <pinref part="S3" gate="G$1" pin="4"/>
 <pinref part="SUPPLY19" gate="G$1" pin="VCC"/>
 </segment>
 <segment>
-<wire x1="289.56" y1="-25.4" x2="289.56" y2="-22.86" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<wire x1="289.56" y1="-22.86" x2="292.1" y2="-22.86" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<wire x1="292.1" y1="-22.86" x2="294.64" y2="-22.86" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<wire x1="294.64" y1="-22.86" x2="294.64" y2="-25.4" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<wire x1="292.1" y1="-22.86" x2="292.1" y2="-20.32" width="0.1524" layer="91" grouprefs="BUTTON MCU"/>
-<junction x="292.1" y="-22.86" grouprefs="BUTTON MCU"/>
+<wire x1="289.56" y1="-25.4" x2="289.56" y2="-22.86" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<wire x1="289.56" y1="-22.86" x2="292.1" y2="-22.86" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<wire x1="292.1" y1="-22.86" x2="294.64" y2="-22.86" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<wire x1="294.64" y1="-22.86" x2="294.64" y2="-25.4" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<wire x1="292.1" y1="-22.86" x2="292.1" y2="-20.32" width="0.1524" layer="91" grouprefs="MCU BUTTON"/>
+<junction x="292.1" y="-22.86" grouprefs="MCU BUTTON"/>
 <pinref part="S4" gate="G$1" pin="3"/>
 <pinref part="S4" gate="G$1" pin="4"/>
 <pinref part="SUPPLY27" gate="G$1" pin="VCC"/>
