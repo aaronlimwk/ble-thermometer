@@ -7460,13 +7460,13 @@ Commonly used for small ceramic capacitors. Like our 0.1uF (http://www.sparkfun.
 <pinref part="C5" gate="G$1" pin="2"/>
 </segment>
 <segment>
-<pinref part="U5" gate="G$1" pin="PC0(ADC0)"/>
-<wire x1="325.12" y1="81.28" x2="327.66" y2="81.28" width="0.1524" layer="91" grouprefs="MCU"/>
 <label x="330.2" y="81.28" size="1.778" layer="95" align="center-left" grouprefs="MCU"/>
 <wire x1="327.66" y1="81.28" x2="330.2" y2="81.28" width="0.1524" layer="91" grouprefs="MCU"/>
 <wire x1="327.66" y1="83.82" x2="327.66" y2="81.28" width="0.1524" layer="91" grouprefs="MCU"/>
-<junction x="327.66" y="81.28" grouprefs="MCU"/>
 <pinref part="TP7" gate="G$1" pin="TP"/>
+<pinref part="U5" gate="G$1" pin="PC0(ADC0)"/>
+<wire x1="325.12" y1="81.28" x2="327.66" y2="81.28" width="0.1524" layer="91"/>
+<junction x="327.66" y="81.28"/>
 </segment>
 </net>
 <net name="N$17" class="0">
