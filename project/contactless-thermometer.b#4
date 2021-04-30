@@ -190,7 +190,7 @@
 <vertex x="26.162" y="81.28"/>
 <vertex x="27.94" y="80.264"/>
 </polygon>
-<text x="19.746" y="65.913" size="1.27" layer="21" ratio="20" align="top-center">ON/OFF</text>
+<text x="19.746" y="65.913" size="1.27" layer="21" font="vector" ratio="20" align="top-center">ON/OFF</text>
 <wire x1="18.542" y1="31.75" x2="18.542" y2="30.48" width="0.1524" layer="21"/>
 <wire x1="18.542" y1="30.48" x2="19.304" y2="30.48" width="0.1524" layer="21"/>
 <wire x1="19.304" y1="30.48" x2="19.304" y2="31.75" width="0.1524" layer="21"/>
