@@ -201,6 +201,7 @@
 <wire x1="17.272" y1="30.226" x2="17.272" y2="32.004" width="0.1524" layer="21" curve="-163.739795"/>
 <wire x1="17.399" y1="30.607" x2="17.399" y2="31.623" width="0.1524" layer="21" curve="-180"/>
 <wire x1="17.5006" y1="30.9372" x2="17.5006" y2="31.2928" width="0.1524" layer="21" curve="-188.130102"/>
+<text x="2.286" y="114.046" size="1.27" layer="21" ratio="20">ICSP</text>
 </plain>
 <libraries>
 <library name="BH9VPC">
