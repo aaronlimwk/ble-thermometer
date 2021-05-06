@@ -6454,9 +6454,9 @@ Commonly used for small ceramic capacitors. Like our 0.1uF (http://www.sparkfun.
 <part name="U2" library="SamacSys_Parts" deviceset="OPA2705UA" device=""/>
 <part name="U1" library="SamacSys_Parts" deviceset="LT1167CS8#PBF" device=""/>
 <part name="BT1" library="BH9VPC" deviceset="BH9VPC" device=""/>
-<part name="U4" library="SamacSys_Parts" deviceset="TPS561201DDCR" device="" value="TPS562200DDCR"/>
+<part name="U4" library="SamacSys_Parts" deviceset="TPS561201DDCR" device="" value="TPS562200"/>
 <part name="SUPPLY6" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="GND" device=""/>
-<part name="U5" library="atmel" library_urn="urn:adsk.eagle:library:105" deviceset="MEGA8" device="-AI" package3d_urn="urn:adsk.eagle:package:4313/2" value="ATMEGA328P-AU"/>
+<part name="U5" library="atmel" library_urn="urn:adsk.eagle:library:105" deviceset="MEGA8" device="-AI" package3d_urn="urn:adsk.eagle:package:4313/2" value="ATMEGA328-AU"/>
 <part name="SUPPLY7" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="GND" device=""/>
 <part name="J1" library="SparkFun-Connectors" deviceset="CONN_04" device="" value="OLED"/>
 <part name="U3" library="SamacSys_Parts" deviceset="OPA705NA_3K" device="" value="OPA705NA"/>

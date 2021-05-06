@@ -3,7 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="yes"/>
+<setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="10" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="1" altunitdist="mil" altunit="mil"/>
@@ -23278,7 +23278,7 @@ design rules under a new name.</description>
 <attribute name="MOUSER_PRICE-STOCK" value="https://www.mouser.co.uk/ProductDetail/Texas-Instruments/OPA705NA-3K?qs=wgAEGBTxy7nCp5M53cdWcg%3D%3D" x="-31.7754" y="67.945" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="NAME" x="13.462" y="132.715" size="0.6096" layer="25" font="vector" ratio="20" rot="R270" align="bottom-center"/>
 </element>
-<element name="U4" library="SamacSys_Parts" package="SOT95P280X110-6N" value="TPS561201" x="32.258" y="17.9578" smashed="yes" rot="R90" grouprefs="WEBENCH">
+<element name="U4" library="SamacSys_Parts" package="SOT95P280X110-6N" value="TPS562200DDCR" x="32.258" y="17.9578" smashed="yes" rot="R90" grouprefs="WEBENCH">
 <attribute name="DESCRIPTION" value="4.5V to 17V Input, 1A Synchronous Step-Down Voltage Regulator in 6-pin SOT-23" x="105.918" y="58.5978" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="HEIGHT" value="1.1mm" x="105.918" y="58.5978" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="MANUFACTURER_NAME" value="Texas Instruments" x="105.918" y="58.5978" size="1.778" layer="27" rot="R90" display="off"/>
@@ -23287,7 +23287,7 @@ design rules under a new name.</description>
 <attribute name="MOUSER_PRICE-STOCK" value="https://www.mouser.co.uk/ProductDetail/Texas-Instruments/TPS561201DDCR?qs=5aG0NVq1C4ySUOSRQSt9MQ%3D%3D" x="105.918" y="58.5978" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="NAME" x="34.2138" y="17.9578" size="0.6096" layer="25" font="vector" ratio="20" align="center-left"/>
 </element>
-<element name="U5" library="atmel" library_urn="urn:adsk.eagle:library:105" package="TQFP32-08" package3d_urn="urn:adsk.eagle:package:4313/2" value="ATMEGA328-AU" x="22.352" y="106.8578" smashed="yes" rot="R180">
+<element name="U5" library="atmel" library_urn="urn:adsk.eagle:library:105" package="TQFP32-08" package3d_urn="urn:adsk.eagle:package:4313/2" value="ATMEGA328P-AU" x="22.352" y="106.8578" smashed="yes" rot="R180">
 <attribute name="MF" value="" x="3.302" y="150.0378" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MPN" value="ATMEGA8-16AU" x="3.302" y="150.0378" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="NAME" x="26.162" y="103.124" size="0.8128" layer="25" font="vector" ratio="20" rot="R180" align="bottom-right"/>
@@ -23357,15 +23357,15 @@ design rules under a new name.</description>
 <attribute name="NAME" x="5.842" y="119.5578" size="0.6096" layer="25" font="vector" ratio="20" rot="R180" align="bottom-center"/>
 <attribute name="PROD_ID" value="CAP-00810" x="5.842" y="121.412" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
-<element name="C2" library="SparkFun-Capacitors" package="0603" value="0.1uF" x="14.224" y="120.0658" smashed="yes" rot="R90">
+<element name="C2" library="SparkFun-Capacitors" package="0603" value="0.47uF" x="14.224" y="120.0658" smashed="yes" rot="R90">
 <attribute name="NAME" x="14.224" y="121.92" size="0.6096" layer="25" font="vector" ratio="20" align="bottom-center"/>
 <attribute name="PROD_ID" value="CAP-00810" x="14.224" y="120.0658" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
-<element name="C6" library="SparkFun-Capacitors" package="0603" value="0.1uF" x="33.02" y="120.3198" smashed="yes">
+<element name="C6" library="SparkFun-Capacitors" package="0603" value="4.7nF" x="33.02" y="120.3198" smashed="yes">
 <attribute name="NAME" x="33.02" y="121.158" size="0.6096" layer="25" font="vector" ratio="20" align="bottom-center"/>
 <attribute name="PROD_ID" value="CAP-00810" x="33.02" y="120.3198" size="1.778" layer="27" display="off"/>
 </element>
-<element name="C5" library="SparkFun-Capacitors" package="0603" value="0.1uF" x="26.416" y="121.0818" smashed="yes" rot="R90">
+<element name="C5" library="SparkFun-Capacitors" package="0603" value="10nF" x="26.416" y="121.0818" smashed="yes" rot="R90">
 <attribute name="NAME" x="26.416" y="123.3678" size="0.6096" layer="25" font="vector" ratio="20" rot="R180" align="bottom-center"/>
 <attribute name="PROD_ID" value="CAP-00810" x="26.416" y="121.0818" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
