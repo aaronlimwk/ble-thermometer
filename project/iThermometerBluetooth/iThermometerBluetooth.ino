@@ -1,19 +1,35 @@
+#include <SoftwareSerial.h>
 #include <OneButton.h>
 #include <Wire.h>
 #include <Adafruit_SSD1306.h>
 #include <avr/pgmspace.h>
-#include <SoftwareSerial.h>
 
+// Baud Rate
 #define baud 9600
 
+// Pin Definitions
+#define BUT_L     2
+#define BUT_MID   3
+#define BUT_R     4
+#define PWR_IN    6
+#define PWR_OUT   7
+#define LED       10
+#define VTH       14
+#define BLE_STATE 16
+
+// Bluetooth Message Handler + Setup
+char message[100];
+bool message_incoming = false;
+SoftwareSerial mySerial(9,8); // RX, TX
+int ble_conn_count = 0;
+bool ble_connected = false;
+
+// OLED Definitions
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
 #define SCREEN_HEIGHT 32 // OLED display height, in pixels
-
 #define OLED_RESET     -1 // Reset pin # (or -1 if sharing Arduino reset pin)
 #define SCREEN_ADDRESS 0x3C ///< See datasheet for Address; 0x3D for 128x64, 0x3C for 128x32
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
-
-SoftwareSerial mySerial(9,8); // RX, TX
 
 // 'Menu Bar Icon', 20x20px
 const unsigned char menu_bmp [] PROGMEM = {
@@ -57,44 +73,53 @@ const char *const string_table[] PROGMEM = {string_off, string_tmp, string_bth, 
 
 char buffer[3];
 
-#define BUT_L     2
-#define BUT_MID   3
-#define BUT_R     4
-
-OneButton but_left = OneButton(BUT_L, false, false);
-OneButton but_middle = OneButton(BUT_MID, false, false);
-OneButton but_right = OneButton(BUT_R, false, false);
-
+// State Definitions
 #define SLEEP_STATE       -1
 #define MIN_STATE         0
 #define DEFAULT_STATE     1
 #define MAX_STATE         4
-
 #define CELSIUS_STATE     40
 #define FAHRENHEIT_STATE  41
-
-bool deg_celsius = true;
-
 #define MAX_TIME        30000
 #define SLEEP_TIME      45000
 
+bool deg_celsius = true;
 int state = DEFAULT_STATE;
 unsigned long last_millis = 0;
 unsigned long last_interrupt_millis = 0;
 
-char message[100];
-bool message_incoming = false;
+// Button Setup
+OneButton but_left = OneButton(BUT_L, false, false);
+OneButton but_middle = OneButton(BUT_MID, false, false);
+OneButton but_right = OneButton(BUT_R, false, false);
+
+// Power Button
+bool power_on = false;
+OneButton pwr_in = OneButton(PWR_IN, true, true);
 
 void setup() {
-  // Serial.begin(9600);
+
+  // Pin Setup
+  pinMode(BLE_STATE, INPUT);
+  pinMode(VTH,INPUT);
+  pinMode(PWR_OUT, OUTPUT);
+  pinMode(LED, OUTPUT);
+
+  //Turn off LED
+  digitalWrite(LED, LOW);
+
+  //Begin Serial Communication for HM-11 and Board
   mySerial.begin(baud);
-  
+
+  //Button Click - Function Link
   but_left.attachClick(leftClick);
   but_right.attachClick(rightClick);
   but_middle.attachClick(middleClick);
   but_middle.attachLongPressStart(holdClick);
   but_middle.attachDoubleClick(doubleClick);
+  pwr_in.attachClick(switchLED);
 
+// OLED Setup
   // SSD1306_SWITCHCAPVCC = generate display voltage from 3.3V internally
   if(!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {
     // Serial.println(F("SSD1306 allocation failed"));
@@ -114,20 +139,43 @@ void setup() {
   display.setTextColor(SSD1306_WHITE);
   display.cp437(true);
 
-  at("AT"); // check if working, always returns OK
+  // BLE Setup
   at("AT+NAMEtrump2024");
-  at("AT+ROLE0"); // select master = central
+  at("AT+ROLE0"); // peripheral
   at("AT+IMME0"); // "work immediately", not sure what this does
   at("AT+RESET"); // actually more a restart than a reset .. needed after ROLE
-  at("AT"); // check if working, always returns OK
-  delay(1000);
+  delay(1000); 
 }
 
 void loop() {
   but_left.tick();
   but_right.tick();
   but_middle.tick();
+  pwr_in.tick();
+  
   display.clearDisplay();
+
+  if(ble_connected == false){
+    if(digitalRead(BLE_STATE) == 1){
+      if(ble_conn_count == 20){
+        ble_connected = true;
+        ble_conn_count = 0;
+      }
+      else { 
+        ble_conn_count++;
+      }
+      
+    }
+    else {
+      ble_conn_count = 0;
+    }
+  }
+  
+  if(ble_connected == true){
+    if(digitalRead(BLE_STATE) == 0){
+      ble_connected = false;
+    }
+  }
 
   if (state != SLEEP_STATE) {
     if (millis() >= last_millis + MAX_TIME) {
@@ -181,18 +229,27 @@ void loop() {
   if(mySerial.available()){
     char a = char(mySerial.read());
     if(!message_incoming){
-      if(a == '*'){
+      if(a == '<'){
         message_incoming = true;
-        Serial.println("Message Coming");
+//        Serial.println("Message Coming");
       }
     }
     else{
-      if(a == '#'){
+      if(a == '>'){
         message_incoming = false;
-        Serial.println("Message Finished");
-        Serial.println(message);
-        memset(&message[0],0,sizeof(message));
+//        Serial.println("Message Finished");
+//        Serial.println(message);
         //process message here
+        display.clearDisplay();
+        display.setCursor(25, 9);
+        display.print(message);
+
+        if(strcmp("Record Temperature",message) == 0){
+          mySerial.write("Temperature: Too Hot Bro");
+          //Call Temperature Record Function Here
+        }
+        //reset message buffer
+        memset(&message[0],0,sizeof(message));
       }
       else{
         strncat(message,&a,1);
@@ -205,8 +262,10 @@ void loop() {
 
 void at(char* cmd) {
   mySerial.write(cmd);
-  while(!mySerial.find("OK")) Serial.print(".");
-  Serial.println(" .. OK");
+//  Serial.print(cmd);
+  while(!mySerial.find("OK"));
+//  Serial.print(".");
+  
 }
 
 void leftClick() {
@@ -311,4 +370,17 @@ void selectSequence() {
   display.print("selected!");
   display.display();
   display.setTextSize(2);
+}
+
+void switchLED() {
+  if(power_on == false) {
+    digitalWrite(LED, HIGH);
+    digitalWrite(PWR_OUT, HIGH);
+    power_on = true;
+  }
+  else{
+    digitalWrite(LED, LOW);
+    digitalWrite(PWR_OUT, LOW);
+    power_on = false;
+  }
 }
