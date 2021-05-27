@@ -49,21 +49,54 @@ const char string_clf[] PROGMEM = "CLF";
 const char string_deg[] PROGMEM = "DEG";
 
 const char *const string_table[] PROGMEM = {string_off, string_tmp, string_bth, string_clf, string_deg};
+char buffer[20];
 
-char buffer[3];
+const char question_1[] PROGMEM = "Feeling tired?"; // (24, 6)
+const char question_2[] PROGMEM = "Fever?";         // (50, 6)
+const char question_3[] PROGMEM = "Chills?";        // (46, 6)
+const char question_4[] PROGMEM = "Sore throat?";   // (28, 6)
+const char question_5[] PROGMEM = "Coughing?";      // (40, 6)
+const char question_6[] PROGMEM = "Headache?";      // (40, 6)
+const char question_7[] PROGMEM = "Muscle pain?";   // (28, 6)
+const char question_8[] PROGMEM = "Sneezing?";      // (40, 6)
+
+#define MAX_QUESTION      8
+
+int question_num = 0;
+
+const char *const questions[] PROGMEM = {question_1, question_2, question_3, question_4, question_5, question_6, question_7, question_8};
+const int position_x[8] = {24, 50, 47, 29, 40, 40, 29, 40};
+
+#define FLU       0.001
+const float flu_table[] = {0.8, 0.9, 0.9, 0.55, 0.9, 0.85, 0.675, 0.25};
+float prob_flu = log(FLU);
+
+#define COLD      0.999
+const float cold_table[] = {0.225, 0.005, 0.1, 0.5, 0.4, 0.25, 0.1, 0.9};
+float prob_cold = log(COLD);
 
 #define BUT_L     2
 #define BUT_MID   3
 #define BUT_R     4
 
+//#define PWR_IN    6
+//#define LED_G     10
+
 OneButton but_left = OneButton(BUT_L, false, false);
 OneButton but_middle = OneButton(BUT_MID, false, false);
 OneButton but_right = OneButton(BUT_R, false, false);
 
+//bool power_on = false;
+//OneButton pwr_in = OneButton(PWR_IN, true, true);
+
 #define SLEEP_STATE       -1
 #define MIN_STATE         0
 #define DEFAULT_STATE     1
+#define CLF_STATE         3
 #define MAX_STATE         4
+
+#define CLF_NO_STATE      30
+#define CLF_YES_STATE     31
 
 #define CELSIUS_STATE     40
 #define FAHRENHEIT_STATE  41
@@ -78,13 +111,16 @@ unsigned long last_millis = 0;
 unsigned long last_interrupt_millis = 0;
 
 void setup() {
-  // Serial.begin(9600);
+//  Serial.begin(9600);
 
   but_left.attachClick(leftClick);
+  but_left.attachLongPressStart(holdLeft);
   but_right.attachClick(rightClick);
   but_middle.attachClick(middleClick);
   but_middle.attachLongPressStart(holdClick);
-  but_middle.attachDoubleClick(doubleClick);
+  
+//  pwr_in.attachClick(switchLED);
+//  pinMode(LED_G, OUTPUT);
 
   // SSD1306_SWITCHCAPVCC = generate display voltage from 3.3V internally
   if(!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {
@@ -110,19 +146,47 @@ void loop() {
   but_left.tick();
   but_right.tick();
   but_middle.tick();
+  // pwr_in.tick();
+  
   display.clearDisplay();
+  display.setTextSize(2);
 
   if (state != SLEEP_STATE) {
     if (millis() >= last_millis + MAX_TIME) {
-      state =  DEFAULT_STATE;
-    }
-  
-    if (millis() >= last_millis + SLEEP_TIME) {
+      state = DEFAULT_STATE;
+      reset();
+    } else if (millis() >= last_millis + SLEEP_TIME) {
       state = SLEEP_STATE;
     } 
   }
 
-  if (state == CELSIUS_STATE || state == FAHRENHEIT_STATE) {
+  if (state == CLF_NO_STATE || state == CLF_YES_STATE) {
+    display.drawRect(0, 0, display.width(), display.height(), SSD1306_WHITE);
+    display.setTextSize(1);
+
+    if (state == CLF_NO_STATE) {
+      display.setCursor(25, 20);
+      display.print("YES");
+      display.setCursor(85, 20);
+      display.print(">NO");
+    } else {
+      display.setCursor(19, 20);
+      display.print(">YES");
+      display.setCursor(91, 20);
+      display.print("NO");
+    }
+
+    if (question_num < MAX_QUESTION) {
+      display.setCursor(position_x[question_num], 6);
+      strcpy_P(buffer, (char *)pgm_read_word(&(questions[question_num])));
+      display.print(buffer);
+      
+      display.setCursor(57, 20);
+      display.print(String(question_num + 1));
+      display.print("/8");
+    }
+    
+  } else if (state == CELSIUS_STATE || state == FAHRENHEIT_STATE) {
     display.drawRect(0, 0, display.width(), display.height(), SSD1306_WHITE);
     display.setCursor(25, 9);
     display.print("Unit:");
@@ -167,9 +231,13 @@ void leftClick() {
   if (state == FAHRENHEIT_STATE) {
     last_millis = millis();
     state = CELSIUS_STATE;
+    reset();
   } else if (state > MIN_STATE && state <= MAX_STATE) {
     last_millis = millis();
     state--;
+  } else if (state == CLF_NO_STATE) {
+    last_millis = millis();
+    state = CLF_YES_STATE;
   }
 }
 
@@ -180,6 +248,9 @@ void rightClick() {
   } else if (state >= MIN_STATE && state < MAX_STATE) {
     last_millis = millis();
     state++;
+  } else if (state == CLF_YES_STATE) {
+    last_millis = millis();
+    state = CLF_NO_STATE;
   }
 }
 
@@ -187,16 +258,41 @@ void middleClick() {
   if (state == SLEEP_STATE) {
     last_millis = millis();
     state = DEFAULT_STATE;
+  } else if (state == CLF_STATE) {
+    last_millis = millis();
+    state = CLF_NO_STATE;
   } else if (state == MAX_STATE) {
     last_millis = millis();
     state = CELSIUS_STATE;
+  } else if (state == CLF_YES_STATE || state == CLF_NO_STATE) {
+    last_millis = millis();
+    if (state == CLF_YES_STATE) {
+      prob_flu += log(flu_table[question_num]);
+      prob_cold += log(cold_table[question_num]);
+    } else {
+      prob_flu += log(1 - flu_table[question_num]);
+      prob_cold += log(1 - cold_table[question_num]);
+    }
+    if (question_num + 1 <= MAX_QUESTION) {
+      question_num++;
+      state = CLF_NO_STATE;
+      if (question_num == MAX_QUESTION) {
+        probSequence();
+        state = DEFAULT_STATE;
+        reset();
+      }
+    }
   }
 }
 
-void doubleClick() {
+void holdLeft() {
   if (state == CELSIUS_STATE || state == FAHRENHEIT_STATE) {
     last_millis = millis();
     state = MAX_STATE;
+  } else if (state == CLF_NO_STATE || state == CLF_YES_STATE) {
+    last_millis = millis();
+    question_num = 0;
+    state = CLF_STATE;
   }
 }
 
@@ -212,6 +308,16 @@ void holdClick() {
     state = MAX_STATE;
   }
 }
+
+//void switchLED() {
+//  if (power_on == false) {
+//    digitalWrite(LED_G, HIGH);
+//    power_on = true;
+//  } else {
+//    digitalWrite(LED_G, LOW);
+//    power_on = false;
+//  }
+//}
 
 void drawIcon() {
   display.drawBitmap(4, 6, menu_bmp, 20, 20, SSD1306_WHITE);
@@ -265,4 +371,27 @@ void selectSequence() {
   display.print("selected!");
   display.display();
   display.setTextSize(2);
+}
+
+void reset() {
+  question_num = 0;
+  for (int i = 0; i < MAX_QUESTION; i++) {
+    prob_flu = log(FLU);
+    prob_cold = log(COLD);
+  }
+}
+
+void probSequence() {
+  display.clearDisplay();
+  display.drawRect(0, 0, display.width(), display.height(), SSD1306_WHITE);
+  display.setCursor(20,8);
+  display.print("You most likely");
+  if (prob_flu > prob_cold) {
+    display.setCursor(26,18);
+    display.print("have the flu.");
+  } else {
+    display.setCursor(24,18);
+    display.print("have the cold.");
+  }
+  refresh(2500);
 }
