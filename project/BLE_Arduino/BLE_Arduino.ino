@@ -8,11 +8,14 @@
 #define baud 9600
 
 // Pin Definitions
+#define BUT_L     2
+#define BUT_MID   3
+#define BUT_R     4
+#define PWR_IN    6
+#define PWR_OUT   7
+#define LED       10
+#define VTH       14
 #define BLE_STATE 16
-#define PWR_IN 6
-#define PWR_OUT 7
-#define VTH 14
-#define LED 10
 
 // OLED Definitions
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
@@ -20,7 +23,6 @@
 #define OLED_RESET     -1 // Reset pin # (or -1 if sharing Arduino reset pin)
 #define SCREEN_ADDRESS 0x3C ///< See datasheet for Address; 0x3D for 128x64, 0x3C for 128x32
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
-
 
 // Bluetooth Message Handler + Setup
 char message[100];

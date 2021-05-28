@@ -2,11 +2,13 @@
 #include <Wire.h>
 #include <Adafruit_SSD1306.h>
 #include <avr/pgmspace.h>
+#include <RunningMedian.h>
 
 #define PWR_IN 6
 #define PWR_OUT 7
 #define VTH 14
 #define LED 10
+#define THERMISTOR 15
 
 #define SE 0.02722
 #define ADC2V 0.0049
@@ -25,15 +27,16 @@ bool power_on = false;
 
 double temp = 0;
 
-OneButton pwr_in = OneButton(PWR_IN, true, true);
+RunningMedian temp_samples = RunningMedian(50);
 
 void setup() {
   // put your setup code here, to run once:
   pinMode(VTH,INPUT);
+  pinMode(THERMISTOR, INPUT);
   pinMode(PWR_OUT, OUTPUT);
   pinMode(LED, OUTPUT);
 
-  pwr_in.attachClick(switchLED);
+  digitalWrite(PWR_OUT, HIGH);
   
   // SSD1306_SWITCHCAPVCC = generate display voltage from 3.3V internally
   if(!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {
@@ -61,28 +64,27 @@ void loop() {
 
   display.clearDisplay();
   display.setCursor(25, 9);
-  temp = analogRead(VTH)*ADC2V-2.5;
-  temp /= SE;
-  temp += pow(AMBIENT,EXP);
-  temp = pow(temp, 1/EXP);
-  display.print(temp);
-  display.display();
-  delay(10);
-
-  pwr_in.tick();
+//  temp = analogRead(VTH)*ADC2V-2.5;
+//  temp /= SE;
+//  temp += pow(AMBIENT,EXP);
+//  temp = pow(temp, 1/EXP);
+//  digitalWrite(LED, HIGH);
+//  temp_samples.clear();
+//  for(int i = 0; i < 50; i++) {
+//    temp_samples.add(analogRead(VTH));
+//    delay(30);
+//  }
+//  //digitalWrite(BUZZ, LOW);
+//  temp = temp_samples.getMedian();
+  display.print(analogRead(THERMISTOR));
+  digitalWrite(LED, LOW);
+  
+  refresh(100);
 
 }
 
-
-void switchLED() {
-  if(power_on == false) {
-    digitalWrite(LED, HIGH);
-    digitalWrite(PWR_OUT, HIGH);
-    power_on = true;
-  }
-  else{
-    digitalWrite(LED, LOW);
-    digitalWrite(PWR_OUT, LOW);
-    power_on = false;
-  }
+void refresh(int displayDelay) {
+  display.display();
+  delay(displayDelay);
+  display.clearDisplay();
 }
