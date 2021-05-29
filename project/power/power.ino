@@ -25,7 +25,7 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 bool power_on = false;
 
-double temp = 0;
+float temp = 0;
 
 RunningMedian temp_samples = RunningMedian(50);
 
@@ -53,7 +53,7 @@ void setup() {
   display.clearDisplay();
   
   // Default Font
-  display.setTextSize(2);
+  display.setTextSize(1);
   display.setTextColor(SSD1306_WHITE);
   display.cp437(true);
 
@@ -68,18 +68,21 @@ void loop() {
 //  temp /= SE;
 //  temp += pow(AMBIENT,EXP);
 //  temp = pow(temp, 1/EXP);
-//  digitalWrite(LED, HIGH);
-//  temp_samples.clear();
-//  for(int i = 0; i < 50; i++) {
-//    temp_samples.add(analogRead(VTH));
-//    delay(30);
-//  }
+  digitalWrite(LED, HIGH);
+  temp_samples.clear();
+  for(int i = 0; i < 50; i++) {
+    temp_samples.add(analogRead(VTH));
+    delay(30);
+  }
 //  //digitalWrite(BUZZ, LOW);
-//  temp = temp_samples.getMedian();
+  temp = temp_samples.getAverage();
   display.print(analogRead(THERMISTOR));
+  display.setCursor(25, 18);
+  
+  display.print(temp);
   digitalWrite(LED, LOW);
   
-  refresh(100);
+  refresh(1000);
 
 }
 

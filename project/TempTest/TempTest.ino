@@ -129,9 +129,7 @@ float prob_cold = log(COLD);
 #define OFFSET            2.5
 #define GAIN              1977
 #define MV                1000
-#define CAL_CONST         0.725
-#define NUM_AMBIENT       11
-#define MAX_TEMP_SIZE     54
+#define CAL_CONST         0.7
 RunningMedian temp_samples = RunningMedian(SAMPLE_SIZE);
 
 double temp_c = 0;
@@ -153,7 +151,7 @@ bool power_on = false;
 OneButton pwr_in = OneButton(PWR_IN, true, true);
 
 //Temperature Chart
-const float temp_chart[11][54] PROGMEM = {
+const float temp_chart[9][54] PROGMEM = {
   //20 degrees Celsius
   { 1.247, 1.256, 1.265, 1.274, 1.283, 1.292, 1.301, 1.31, 1.319, 1.328, 1.337, 1.346, 1.355, 1.364, 1.373, 1.382, 1.391, 1.4, 1.409, 1.418, 1.427, 1.437, 1.446, 1.455, 1.464, 1.473, 1.482,
     1.491, 1.501, 1.51, 1.519, 1.528, 1.537, 1.547, 1.556, 1.565, 1.574, 1.584, 1.593, 1.602, 1.612, 1.621, 1.63, 1.639, 1.649, 1.658, 1.668, 1.677, 1.686, 1.696, 1.705, 1.714, 1.724, 1.733
@@ -189,23 +187,13 @@ const float temp_chart[11][54] PROGMEM = {
   //28 degrees Celsius
   { 0.605, 0.614, 0.623, 0.632, 0.641, 0.65, 0.659, 0.668, 0.677, 0.686, 0.695, 0.704, 0.713, 0.722, 0.731, 0.74, 0.749, 0.758, 0.767, 0.777, 0.786, 0.795, 0.804, 0.813, 0.822, 0.831, 0.841,
     0.85, 0.859, 0.868, 0.877, 0.887, 0.896, 0.905, 0.914, 0.923, 0.933, 0.942, 0.951, 0.961, 0.97, 0.979, 0.988, 0.998, 1.007, 1.016, 1.026, 1.035, 1.045, 1.054, 1.063, 1.073, 1.082, 1.091
-  },
-  //29 degrees Celsius
-  { 0.521, 0.530, 0.539, 0.548, 0.557, 0.566, 0.575, 0.584, 0.593, 0.602, 0.611, 0.620, 0.629, 0.638, 0.647, 0.656, 0.665, 0.674, 0.684, 0.693, 0.702, 0.711, 0.720, 0.729, 0.738, 0.748, 0.757,
-    0.766, 0.775, 0.784, 0.793, 0.803, 0.812, 0.821, 0.830, 0.840, 0.849, 0.858, 0.867, 0.877, 0.886, 0.895, 0.905, 0.914, 0.923, 0.933, 0.942, 0.951, 0.961, 0.970, 0.979, 0.989, 0.998, 1.008
-  },
-  //30 degrees Celsius
-  { 0.436, 0.445, 0.454, 0.463, 0.472, 0.481, 0.490, 0.499, 0.508, 0.517, 0.526, 0.535, 0.544, 0.553, 0.563, 0.572, 0.581, 0.590, 0.599, 0.608, 0.617, 0.626, 0.635, 0.644, 0.654, 0.663, 0.672,
-    0.681, 0.690, 0.699, 0.709, 0.718, 0.727, 0.736, 0.746, 0.755, 0.764, 0.773, 0.783, 0.792, 0.801, 0.811, 0.820, 0.829, 0.838, 0.848, 0.857, 0.867, 0.876, 0.885, 0.895, 0.904, 0.913, 0.923
   }
 };
 
 //Ambient Temperature Chart
-float ambient_chart[11] = {2.78, 2.72, 2.67, 2.61, 2.55, 2.5, 2.45, 2.39, 2.34, 2.28, 2.23};
+float ambient_chart[9] = {2.78, 2.72, 2.67, 2.61, 2.55, 2.5, 2.45, 2.39, 2.34};
 
 void setup() {
-  //analogReference(EXTERNAL);
-  // Pin Setup
   pinMode(BLE_STATE, INPUT);
   pinMode(VTH, INPUT);
   pinMode(PWR_OUT, OUTPUT);
@@ -215,7 +203,7 @@ void setup() {
   digitalWrite(LED, LOW);
 
   //Begin Serial Communication for HM-11 and Board
-  mySerial.begin(baud);
+  //mySerial.begin(baud);
 
   //Button Click - Function Link
   but_left.attachClick(leftClick);
@@ -246,171 +234,32 @@ void setup() {
   display.setTextColor(SSD1306_WHITE);
   display.cp437(true);
 
-  // BLE Setup
-  at("AT+NAMEtrump2024");
-  at("AT+ROLE0"); // peripheral
-  at("AT+IMME0"); // "work immediately", not sure what this does
-  at("AT+RESET"); // actually more a restart than a reset .. needed after ROLE
-  delay(1000);
 }
 
 void loop() {
-  but_left.tick();
-  but_right.tick();
-  but_middle.tick();
-  pwr_in.tick();
+  digitalWrite(LED, HIGH);
 
-  display.clearDisplay();
-  display.setTextSize(2);
+  temp_samples.clear();
 
-  if (ble_connected == false) {
-    if (digitalRead(BLE_STATE) == 1) {
-      if (ble_conn_count == 20) {
-        //SHOW BLE CONNECTED HERE U DUMBASS
-        ble_connected = true;
-        ble_conn_count = 0;
-      }
-      else {
-        ble_conn_count++;
-      }
+  temp_f = 0;
+  temp_c = 0;
 
-    }
-    else {
-      ble_conn_count = 0;
-    }
+  double temp_object = 0;
+  double temp_ambient = 0;
+
+  for (int i = 0; i < SAMPLE_SIZE; i++) {
+    temp_samples.add(analogRead(VTH));
+    temp_ambient += analogRead(VR);
+    delay(30);
   }
-
-  if (ble_connected == true) {
-    if (digitalRead(BLE_STATE) == 0) {
-      ble_connected = false;
-    }
-  }
-
-  if (state != SLEEP_STATE) {
-    if (millis() >= last_millis + MAX_TIME) {
-      state = DEFAULT_STATE;
-      reset();
-    } else if (millis() >= last_millis + SLEEP_TIME) {
-      state = SLEEP_STATE;
-    }
-  }
-
-  if (state == CLF_NO_STATE || state == CLF_YES_STATE) {
-    display.drawRect(0, 0, display.width(), display.height(), SSD1306_WHITE);
-    display.setTextSize(1);
-
-    if (state == CLF_NO_STATE) {
-      display.setCursor(25, 20);
-      display.print("YES");
-      display.setCursor(85, 20);
-      display.print(">NO");
-    } else {
-      display.setCursor(19, 20);
-      display.print(">YES");
-      display.setCursor(91, 20);
-      display.print("NO");
-    }
-
-    if (question_num < MAX_QUESTION) {
-      display.setCursor(position_x[question_num], 6);
-      strcpy_P(buffer, (char *)pgm_read_word(&(questions[question_num])));
-      display.print(buffer);
-
-      display.setCursor(57, 20);
-      display.print(question_num + 1);
-      display.print("/8");
-    }
-
-  } else if (state == CELSIUS_STATE || state == FAHRENHEIT_STATE) {
-    display.drawRect(0, 0, display.width(), display.height(), SSD1306_WHITE);
-    display.setCursor(25, 9);
-    display.print("Unit:");
-    display.setTextSize(1);
-    display.write(167);
-    display.setTextSize(2);
-
-    if (state == CELSIUS_STATE) {
-      display.print("C");
-      display.setCursor(108, 9);
-      display.write(16);
-    } else {
-      display.print("F");
-      display.setCursor(8, 9);
-      display.write(17);
-    }
-  } else if (state == TEMP_REC_STATE) {
-    display.drawRect(0, 0, display.width(), display.height(), SSD1306_WHITE);
-    display.setCursor(25, 9);
-    //display.print(temp_object);
-    //if temp_f or temp c is negative
-    //set temp_f and temp_c to 0
-    //print invalid temp not human
-    //else print temp_f or temp_c
-  } else if (state != SLEEP_STATE) {
-    drawIcon();
-    display.drawRect(0, 0, display.width(), display.height(), SSD1306_WHITE);
-    if (state == MIN_STATE) {
-      display.setCursor(90, 9);
-      display.write(16);
-    } else if (state == MAX_STATE) {
-      display.setCursor(28, 9);
-      display.write(17);
-    } else {
-      display.setCursor(28, 9);
-      display.write(17);
-      display.setCursor(90, 9);
-      display.write(16);
-    }
-
-    display.setCursor(47, 9);
-    strcpy_P(buffer, (char *)pgm_read_word(&(string_table[state])));
-    display.print(buffer);
-  }
-
-  if (mySerial.available()) {
-    char a = char(mySerial.read());
-    if (!message_incoming) {
-      if (a == '<') {
-        message_incoming = true;
-      }
-    }
-    else {
-      if (a == '>') {
-        message_incoming = false;
-        if (strcmp("Record Temperature", message) == 0) {
-          if (power_on == false) {
-            powerON();
-            delay(500);
-            temp_samples.clear();
-            for (int i = 0; i < SAMPLE_SIZE; i++) {
-              temp_samples.add(analogRead(VTH));
-              delay(30);
-            }
-            //temp_median = temp_samples.getMedian();
-            //getTemperature(temp_median);
-            //mySerial.print(temp_median);
-            powerOFF();
-          }
-          else {
-            mySerial.print("Try Again");
-          }
-        }
-        memset(&message[0], 0, sizeof(message));
-      }
-      else {
-        strncat(message, &a, 1);
-      }
-    }
-  }
-
-  refresh(10);
-}
-
-void at(char* cmd) {
-  mySerial.write(cmd);
-  //  Serial.print(cmd);
-  while (!mySerial.find("OK"));
-  //  Serial.print(".");
+  //digitalWrite(BUZZ, LOW);
+  temp_object = temp_samples.getAverage();
+  temp_ambient /= SAMPLE_SIZE;
+  getTemperature(temp_object, temp_ambient);
+  //    if (ble_connected) {
+  //      mySerial.print(temp_median);
+  //    }
+  digitalWrite(LED, LOW);
 
 }
 
@@ -530,11 +379,6 @@ void holdRecord() {
     //    if (ble_connected) {
     //      mySerial.print(temp_median);
     //    }
-    display.setCursor(25,19);
-    display.print(temp_c);
-    //display.setCursor(25,18);
-    //display.print(temp_ambient);
-    refresh(3000);
     digitalWrite(LED, LOW);
   }
 }
@@ -553,7 +397,7 @@ void getTemperature(double object, double ambient) {
   //Find Ambient Temperature based on voltage
   int ambient_index = 0;
   double ratio = 0;
-  for (int i = 0; i < NUM_AMBIENT-1; i++) {
+  for (int i = 0; i < 8; i++) {
     if (ambient <= ambient_chart[i] && ambient >= ambient_chart[i + 1]) {
       double diff = ambient_chart[i] - ambient_chart[i + 1];
       ambient = ambient - ambient_chart[i + 1];
@@ -565,20 +409,14 @@ void getTemperature(double object, double ambient) {
       } else {
         ambient_index = i + 1;
       }
-      display.setTextSize(1);
-      display.setCursor(25,9);
-      display.print(ambient_index+20);
     }
   }
 
-  for (int i = 0; i < MAX_TEMP_SIZE-1; i++) {
+  for (int i = 0; i < 53; i++) {
     float temp1 = pgm_read_float_near(temp_chart[ambient_index]+i);
     float temp2 = pgm_read_float_near(temp_chart[ambient_index]+i+1);
     
     if (object >= temp1 && object <= temp2) {
-      digitalWrite(BUZZ, HIGH);
-      delay(100);
-      digitalWrite(BUZZ, LOW);
       if (object - temp1 > temp2 - object) {
         temp_c = (i + 1) * 0.1 + 35;
       } else {
@@ -588,6 +426,10 @@ void getTemperature(double object, double ambient) {
   }
   
   temp_f = temp_c * 1.8 + 32;
+
+  display.setCursor(25,9);
+  display.print(temp_c);
+  refresh(1000);
 }
 
 void drawIcon() {
