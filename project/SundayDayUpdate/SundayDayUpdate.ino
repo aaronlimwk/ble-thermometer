@@ -98,12 +98,12 @@ const int position_x[8] = {24, 50, 47, 29, 40, 40, 29, 40};
 
 #define FLU               0.001
 
-const float flu_table[] PROGMEM = {0.8, 0.9, 0.9, 0.55, 0.9, 0.85, 0.675, 0.25};
+const float flu_table[] = {0.8, 0.9, 0.9, 0.55, 0.9, 0.85, 0.675, 0.25};
 float prob_flu = log(FLU);
 
 #define COLD              0.999
 
-const float cold_table[] PROGMEM = {0.225, 0.005, 0.1, 0.5, 0.4, 0.25, 0.1, 0.9};
+const float cold_table[] = {0.225, 0.005, 0.1, 0.5, 0.4, 0.25, 0.1, 0.9};
 float prob_cold = log(COLD);
 
 // State Definitions
@@ -203,7 +203,7 @@ const float temp_chart[11][54] PROGMEM = {
 };
 
 // Ambient Temperature Chart
-const float ambient_chart[11] PROGMEM = {2.78, 2.72, 2.67, 2.61, 2.55, 2.5, 2.45, 2.39, 2.34, 2.28, 2.23};
+float ambient_chart[11] = {2.78, 2.72, 2.67, 2.61, 2.55, 2.5, 2.45, 2.39, 2.34, 2.28, 2.23};
 
 void setup() {
   // Pin Setup
@@ -342,7 +342,7 @@ void loop() {
     }
   } else if (state == TEMP_REC_STATE) {
     display.drawRect(0, 0, display.width(), display.height(), SSD1306_WHITE);
-    if (temp_c >= 0) {
+    if (temp_c >= 0 || temp_f >= 0) {
       display.setTextSize(2);
       if (!deg_celsius) {
         if (temp_f >= 100) {
@@ -379,7 +379,7 @@ void loop() {
       display.print("Invalid reading.");
       display.setCursor(15, 18);
       display.print("Please try again!");
-      refresh(2000);
+      delay(2000);
     }
   } else if (state != SLEEP_STATE) {
     drawIcon();
@@ -427,25 +427,18 @@ void loop() {
             recordData();
             printPeriod();
             delay(200);
-
-            if (temp_c >= 0) {
-              if (deg_celsius) {
-                if (temp_c >= 0) {
-                  mySerial.print(temp_c);
-                  mySerial.print("°C");
-                }
-                // ADD "ºC"
-              } else {
-                mySerial.print(temp_f);
-                mySerial.print("°F");
-              }
+            
+            if (deg_celsius) {
+              mySerial.print(temp_c);
+              mySerial.print("°C");
             } else {
-              mySerial.print("Invalid Temperature");
+              mySerial.print(temp_f);
+              mySerial.print("°F");
             }
+            powerOFF();
           } else {
             mySerial.print("Try Again");
           }
-          powerOFF();
         }
         memset(&message[0], 0, sizeof(message));
       } else {
@@ -505,11 +498,11 @@ void middleClick() {
     state = CELSIUS_STATE;
   } else if (state == CLF_YES_STATE || state == CLF_NO_STATE) {
     if (state == CLF_YES_STATE) {
-      prob_flu += log(pgm_read_float_near(flu_table + question_num));
-      prob_cold += log(pgm_read_float_near(cold_table + question_num));
+      prob_flu += log(flu_table[question_num]);
+      prob_cold += log(cold_table[question_num]);
     } else {
-      prob_flu += log(1 - pgm_read_float_near(flu_table + question_num));
-      prob_cold += log(1 - pgm_read_float_near(cold_table + question_num));
+      prob_flu += log(1 - flu_table[question_num]);
+      prob_cold += log(1 - cold_table[question_num]);
     }
     if (question_num + 1 <= MAX_QUESTION) {
       question_num++;
@@ -547,7 +540,6 @@ void holdLeft() {
 
 void holdClick() {
   if (state == MIN_STATE) {
-    bussIT(100);
     sleepSequence();
     state = SLEEP_STATE;
     display.setTextSize(2);
@@ -567,6 +559,7 @@ void holdRecord() {
 }
 
 void recordData() {
+  // digitalWrite(BUZZ, HIGH);
   digitalWrite(LED, HIGH);
 
   temp_samples.clear();
@@ -604,10 +597,9 @@ void getTemperature(double object, double ambient) {
   bool valid_ambient = false;
   bool valid_temp = false;
   for (int i = 0; i < NUM_AMBIENT - 1; i++) {
-    
-    if (ambient <= pgm_read_float_near(ambient_chart + i) && ambient >= pgm_read_float_near(ambient_chart + i + 1)) {
-      double diff = pgm_read_float_near(ambient_chart + i) - pgm_read_float_near(ambient_chart + i + 1);
-      ambient = ambient - pgm_read_float_near(ambient_chart + i + 1);
+    if (ambient <= ambient_chart[i] && ambient >= ambient_chart[i + 1]) {
+      double diff = ambient_chart[i] - ambient_chart[i + 1];
+      ambient = ambient - ambient_chart[i + 1];
       ratio = ambient / diff;
       if (ratio >= 0.5) {
         ambient_index = i;
@@ -639,7 +631,6 @@ void getTemperature(double object, double ambient) {
     temp_c = -1;
     temp_f = -1;
   }
-  bussIT(100);
 }
 
 void drawIcon() {
@@ -649,12 +640,6 @@ void drawIcon() {
   } else {
     display.drawBitmap(104, 6, ble_off_bmp, 20, 20, SSD1306_WHITE);
   }
-}
-
-void bussIT(int down) {
-  digitalWrite(BUZZ, HIGH);
-  delay(down);
-  digitalWrite(BUZZ, LOW);
 }
 
 void refresh(int displayDelay) {
