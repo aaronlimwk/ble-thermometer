@@ -71,11 +71,10 @@ const unsigned char sleep_bmp [] PROGMEM = {
 
 const char string_off[] PROGMEM = "OFF";
 const char string_tmp[] PROGMEM = "TMP";
-const char string_bth[] PROGMEM = "BLE";
 const char string_clf[] PROGMEM = "CLF";
 const char string_deg[] PROGMEM = "DEG";
 
-const char *const string_table[] PROGMEM = {string_off, string_tmp, string_bth, string_clf, string_deg};
+const char *const string_table[] PROGMEM = {string_off, string_tmp, string_clf, string_deg};
 
 char buffer[20];
 
@@ -110,8 +109,8 @@ float prob_cold = log(COLD);
 #define SLEEP_STATE       -1
 #define MIN_STATE         0
 #define DEFAULT_STATE     1
-#define CLF_STATE         3
-#define MAX_STATE         4
+#define CLF_STATE         2
+#define MAX_STATE         3
 
 #define TEMP_REC_STATE    10
 
@@ -121,8 +120,8 @@ float prob_cold = log(COLD);
 #define CELSIUS_STATE     40
 #define FAHRENHEIT_STATE  41
 
-#define MAX_TIME          30000
-#define SLEEP_TIME        45000
+#define MAX_TIME          25000
+#define SLEEP_TIME        30000
 
 #define SAMPLE_SIZE       40
 #define ADC_RES           1024
@@ -251,7 +250,7 @@ void setup() {
   display.cp437(true);
 
   // BLE Setup
-  at("AT+NAMEtrump2024");
+  at("AT+NAMEiThermometer");
   at("AT+ROLE0"); // Set peripheral mode
   at("AT+IMME0"); // Work immediately
   at("AT+RESET"); // Actually more a restart than a reset => Needed after ROLE
@@ -289,11 +288,12 @@ void loop() {
   }
 
   if (state != SLEEP_STATE) {
-    if (millis() >= last_millis + MAX_TIME) {
+    if (millis() >= last_millis + SLEEP_TIME) {
+      bussIT(100);
+      state = SLEEP_STATE;
+    } else if (millis() >= last_millis + MAX_TIME) {
       state = DEFAULT_STATE;
       reset();
-    } else if (millis() >= last_millis + SLEEP_TIME) {
-      state = SLEEP_STATE;
     }
   }
 
