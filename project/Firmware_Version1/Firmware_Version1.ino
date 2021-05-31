@@ -251,7 +251,7 @@ void setup() {
   display.cp437(true);
 
   // BLE Setup
-  at("AT+NAMEtrump2024");
+  at("AT+NAMEiThermometer");
   at("AT+ROLE0"); // Set peripheral mode
   at("AT+IMME0"); // Work immediately
   at("AT+RESET"); // Actually more a restart than a reset => Needed after ROLE
